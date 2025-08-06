@@ -2,6 +2,7 @@ package task
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"math/rand"
 	"net"
@@ -19,6 +20,7 @@ var (
 	// IPFile is the filename of IP Rangs
 	IPFile = defaultInputFile
 	IPText string
+	num = 0
 )
 
 func InitRandSeed() {
@@ -164,7 +166,53 @@ func loadIPRanges() []*net.IPAddr {
 			}
 		}
 	} else { // 从文件中获取 IP 段数据
+_, err := os.Stat("ip.txt")
+    if err != nil {
+    num = 1
+    ip := `173.245.48.0/20
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+141.101.64.0/18
+108.162.192.0/18
+190.93.240.0/20
+188.114.96.0/20
+197.234.240.0/22
+198.41.128.0/17
+162.158.0.0/15
+104.16.0.0/12
+172.64.0.0/17
+172.64.128.0/18
+172.64.192.0/19
+172.64.224.0/22
+172.64.229.0/24
+172.64.230.0/23
+172.64.232.0/21
+172.64.240.0/21
+172.64.248.0/21
+172.65.0.0/16
+172.66.0.0/16
+172.67.0.0/16
+131.0.72.0/22`
+
+	file, err := os.Create("ip.txt")
+	if err != nil {
+		fmt.Printf("Error creating file: %v\n", err)
+		
+	}
+	defer file.Close() // 确保文件在函数退出时关闭
+
+	// 写入多行数据到文件
+	_, err = file.WriteString(ip)
+	if err != nil {
+		fmt.Printf("Error writing to file: %v\n", err)
+	
+	}
+  }
+  
+  
 		if IPFile == "" {
+     
 			IPFile = defaultInputFile
 		}
 		file, err := os.Open(IPFile)
@@ -184,6 +232,12 @@ func loadIPRanges() []*net.IPAddr {
 			} else {
 				ranges.chooseIPv6()
 			}
+		}
+		if num == 1 {
+		err := os.Remove("ip.txt")
+		if err != nil {
+		fmt.Printf("出现问题")
+		}
 		}
 	}
 	return ranges.ips
