@@ -57,7 +57,7 @@ https://github.com/XIU2/CloudflareSpeedTest
     -p 10
         显示结果数量；测速后直接显示指定数量的结果，为 0 时不显示结果直接退出；(默认 10 个)
     -f ip.txt
-        IP段数据文件；如路径含有空格请加上引号；支持其他 CDN IP段；(默认 ip.txt)
+        IP段数据文件；如路径含有空格请加上引号；支持其他 CDN IP段；(默认 ip.txt,当目录内文件不存在时,使用内置的ip.txt)
     -ip 1.1.1.1,2.2.2.2/24,2606:4700::/32
         指定IP段数据；直接通过参数指定要测速的 IP 段数据，英文逗号分隔；(默认 空)
     -o result.csv
@@ -133,7 +133,7 @@ https://github.com/XIU2/CloudflareSpeedTest
 func main() {
 	task.InitRandSeed() // 置随机数种子
 
-	fmt.Printf("# XIU2/CloudflareSpeedTest %s \n\n", version)
+	fmt.Printf("# based on XIU2/CloudflareSpeedTest,changed by nostalgia %s \n\n", version)
 
 	// 开始延迟测速 + 过滤延迟/丢包
 	pingData := task.NewPing().Run().FilterDelay().FilterLossRate()
