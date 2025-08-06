@@ -13,6 +13,7 @@ var (
 	Magenta = color.New(color.FgMagenta)            // 紫红色 35
 	Cyan    = color.New(color.FgHiCyan, color.Bold) // 青色 36
 	White   = color.New(color.FgWhite)              // 白色 37
-	Pink    = color.New(color.FgHiRed, color.Bold)
+	Pink    = color.RGB(255, 182, 193).Add(color.Bold) //粉色,感觉好看
 )
+
 
