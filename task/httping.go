@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/XIU2/CloudflareSpeedTest/utils"
+	"github.com/nostalgia296/CloudflareSpeedTest-fork/utils"
 )
 
 var (
