@@ -1,4 +1,4 @@
-module github.com/XIU2/CloudflareSpeedTest
+module github.com/nostalgia296/CloudflareSpeedTest
 
 go 1.18
 
