@@ -1,4 +1,4 @@
-module github.com/nostalgia296/CloudflareSpeedTest
+module github.com/nostalgia296/CloudflareSpeedTest-fork
 
 go 1.18
 
